@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Pizza.</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+    <!-- Background Decoration -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="login-container">
+
+        <!-- Form Section -->
+        <main class="login-form-section">
+            <div class="logo-text">Your logo</div>
+            <h1 class="login-title">Login</h1>
+
+            <form id="login-form">
+                <div class="input-group">
+                    <label>Email</label>
+                    <div class="input-wrapper">
+                        <input type="email" placeholder="username@gmail.com" id="login-email" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <div class="input-wrapper">
+                        <input type="password" placeholder="••••••••" id="login-password" required>
+                        <i class="fas fa-eye-slash" id="toggle-password"></i>
+                    </div>
+                </div>
+
+                <div class="forgot-pass">
+                    <a href="#">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn-signin">Sign in</button>
+            </form>
+
+            <div class="divider">
+                <span>Or Continue With</span>
+            </div>
+
+            <div class="social-logins">
+                <div class="social-btn">
+                    <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" alt="Google">
+                </div>
+                <div class="social-btn">
+                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+                </div>
+                <div class="social-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg"
+                        alt="Facebook">
+                </div>
+            </div>
+
+            <div class="register-footer">
+                Don't have an account yet? <a href="#">Register for free</a>
+            </div>
+        </main>
+
+        <!-- Mascot Display Section -->
+        <aside class="login-mascot-section">
+            <!-- Animated Floating Leaves -->
+            <div class="floating-leaves">
+                <div class="leaf" style="top: 20%; left: 10%; rotate: 30deg;"></div>
+                <div class="leaf" style="top: 15%; right: 15%; rotate: -20deg;"></div>
+                <div class="leaf" style="bottom: 25%; right: 20%; rotate: 45deg;"></div>
+                <div class="leaf" style="bottom: 40%; left: 15%; rotate: -15deg;"></div>
+            </div>
+
+            <!-- This is where the mascot would be. Using a premium illustration asset search -->
+            <img class="mascot-character"
+                src="https://cdn3d.iconscout.com/3d/premium/thumb/peaceful-monk-character-5683457-4731383.png"
+                alt="Mascot Illustration">
+        </aside>
+
+    </div>
+
+    <!-- JS for toggle visibility -->
+    <script>
+        const togglePassword = document.querySelector('#toggle-password');
+        const password = document.querySelector('#login-password');
+
+        togglePassword.addEventListener('click', function (e) {
+            // toggle the type attribute
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            // toggle the eye slash icon
+            this.classList.toggle('fa-eye');
+            this.classList.toggle('fa-eye-slash');
+        });
+
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Mock Login
+            window.location.href = 'account.html';
+        });
+    </script>
+</body>
+
+</html>

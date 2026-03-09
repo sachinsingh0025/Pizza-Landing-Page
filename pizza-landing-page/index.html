@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza. | Delicious Pizza Starts Here</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="logo">Pizza<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="account.html">Account</a></li>
+        </ul>
+        <div class="nav-actions" style="display: flex; align-items: center; gap: 20px;">
+            <div id="cart-trigger" style="position: relative; cursor: pointer; font-size: 20px;">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count"
+                    style="position: absolute; top: -10px; right: -10px; background: var(--primary); color: white; font-size: 10px; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">2</span>
+            </div>
+            <a href="account.html" class="btn btn-primary">Order Now</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Your Delicious Pizza <span class="highlight">Start Here!</span></h1>
+            <p>Experience the authentic taste of Italy with our handcrafted pizzas made from the finest ingredients.</p>
+            <a href="menu.html" class="btn btn-primary">View Our Menu</a>
+
+            <div class="pizza-slider">
+                <div class="slider-btn prev">❮</div>
+                <img src="assets/hero_pizza.png" alt="Pizza" class="hero-pizza-img" id="heroPizza">
+                <div class="slider-btn next">❯</div>
+            </div>
+        </div>
+
+        <!-- Decorative Ingredients -->
+        <img src="assets/ingredients.png" class="ingredient"
+            style="top: 20%; left: 10%; width: 80px; animation: float 6s infinite;">
+        <img src="assets/ingredients.png" class="ingredient"
+            style="top: 15%; right: 15%; width: 100px; animation: float 8s infinite 1s;">
+        <img src="assets/ingredients.png" class="ingredient"
+            style="bottom: 30%; left: 5%; width: 120px; animation: float 7s infinite 0.5s;">
+        <img src="assets/ingredients.png" class="ingredient"
+            style="bottom: 20%; right: 10%; width: 90px; animation: float 9s infinite 2s;">
+    </section>
+
+    <section class="menu-section">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <h2>Explore Our <span>Categories</span></h2>
+            </div>
+
+            <div class="categories-container" id="categories">
+                <div class="category-card active" data-category="pizza">
+                    <div class="category-icon" style="background:#fdf2f2;"><img
+                            src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=100&q=80"
+                            width="30" style="border-radius:50%;"></div>
+                    <span>Pizza</span>
+                </div>
+                <div class="category-card" data-category="burger">
+                    <div class="category-icon" style="background:#fdf2f2;"><img
+                            src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=100&q=80"
+                            width="30" style="border-radius:50%;"></div>
+                    <span>Burger</span>
+                </div>
+                <div class="category-card" data-category="fries">
+                    <div class="category-icon" style="background:#fdf2f2;"><img
+                            src="https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=100&q=80"
+                            width="30" style="border-radius:50%;"></div>
+                    <span>Snacks</span>
+                </div>
+                <div class="category-card" data-category="drinks">
+                    <div class="category-icon" style="background:#fdf2f2;"><img
+                            src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=100&q=80"
+                            width="30" style="border-radius:50%;"></div>
+                    <span>Drinks</span>
+                </div>
+            </div>
+
+            <div class="menu-grid" id="menuGrid">
+                <!-- Menu items will be injected by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our <span class="highlight">Customers</span> Are Saying!</h2>
+            </div>
+            <div class="testimonial-track">
+                <div class="t-card t-red">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg"
+                            style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid white;">
+                        <strong style="color: white;">John Doe</strong>
+                    </div>
+                    <p>"The best pizza I've ever had! The crust is so crispy and the ingredients are incredibly fresh."
+                    </p>
+                </div>
+                <div class="t-card t-green">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg"
+                            style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid white;">
+                        <strong style="color: white;">Sarah Smith</strong>
+                    </div>
+                    <p>"Amazing service and even better pizza. The Margherita is my absolute favorite!"</p>
+                </div>
+                <div class="t-card t-yellow">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <img src="https://randomuser.me/api/portraits/men/85.jpg"
+                            style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid #333;">
+                        <strong style="color: #333;">Mike Johnson</strong>
+                    </div>
+                    <p>"Fast delivery and still piping hot. You can really taste the quality in every bite."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="logo" style="color: white;">Pizza<span style="color: white;">.</span></div>
+                    <p style="margin-top: 20px;">The best pizza in town. Fresh ingredients, handmade dough, and lots of
+                        love.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul style="list-style: none; margin-top: 20px;">
+                        <li><a href="index.html"
+                                style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Home</a>
+                        </li>
+                        <li><a href="menu.html"
+                                style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Menu</a>
+                        </li>
+                        <li><a href="#"
+                                style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">About</a>
+                        </li>
+                        <li><a href="#"
+                                style="color: white; text-decoration: none; margin-bottom: 10px; display: block;">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Opening Hours</h4>
+                    <p style="margin-top: 20px;">Mon - Fri: 10:00 - 22:00</p>
+                    <p>Sat - Sun: 11:00 - 23:00</p>
+                </div>
+                <div>
+                    <h4>Contact Us</h4>
+                    <p style="margin-top: 20px;">123 Pizza Street, Food City</p>
+                    <p>Phone: +1 234 567 890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Pizza Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>My Shopping Cart</h3>
+            <i class="fas fa-times close-cart" id="close-cart"></i>
+        </div>
+        <div class="cart-items-container" id="cart-items-container">
+            <div class="cart-item">
+                <img src="assets/hero_pizza.png" class="cart-item-img" alt="">
+                <div class="cart-item-info">
+                    <h4>Double Pepperoni</h4>
+                    <span style="color: var(--primary); font-weight: 700;">$15.99</span>
+                    <div class="cart-item-qty">
+                        <div class="qty-btn"><i class="fas fa-minus"></i></div>
+                        <span>1</span>
+                        <div class="qty-btn"><i class="fas fa-plus"></i></div>
+                    </div>
+                </div>
+                <i class="fas fa-trash" style="color: #ccc; cursor: pointer;"></i>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>Subtotal</span>
+                <span>$15.99</span>
+            </div>
+            <div class="cart-total-row">
+                <span>Delivery</span>
+                <span>$2.00</span>
+            </div>
+            <div class="cart-total-row grand-total">
+                <span>Total</span>
+                <span>$17.99</span>
+            </div>
+            <a href="payment.html" class="checkout-btn">Proceed to Checkout</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="cart.js"></script>
+</body>
+
+</html>

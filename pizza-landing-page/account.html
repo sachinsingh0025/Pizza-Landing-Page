@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Overview | Pizza.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">Pizza<span style="color: var(--primary);">.</span></div>
+            <nav class="sidebar-menu">
+                <a href="#" class="menu-item active" data-target="overview">
+                    <i class="fas fa-th-large"></i> <span>Overview</span>
+                </a>
+                <a href="#" class="menu-item" data-target="profile">
+                    <i class="fas fa-user"></i> <span>My Profile</span>
+                </a>
+                <a href="#" class="menu-item" data-target="orders">
+                    <i class="fas fa-shopping-bag"></i> <span>My Orders</span>
+                </a>
+                <a href="#" class="menu-item" data-target="addresses">
+                    <i class="fas fa-map-marker-alt"></i> <span>Saved Addresses</span>
+                </a>
+                <a href="#" class="menu-item" data-target="favorites">
+                    <i class="fas fa-heart"></i> <span>Favorites</span>
+                </a>
+                <a href="#" class="menu-item" data-target="payments">
+                    <i class="fas fa-credit-card"></i> <span>Payment Methods</span>
+                </a>
+                <a href="#" class="menu-item" data-target="coupons">
+                    <i class="fas fa-ticket-alt"></i> <span>Coupons & Offers</span>
+                </a>
+                <a href="#" class="menu-item" data-target="notifications">
+                    <i class="fas fa-bell"></i> <span>Notifications</span>
+                </a>
+                <a href="#" class="menu-item" data-target="settings">
+                    <i class="fas fa-cog"></i> <span>Settings</span>
+                </a>
+                <a href="#" class="menu-item logout">
+                    <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content 영역 -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-wrapper">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search for order, pizza...">
+                </div>
+                <div class="user-nav">
+                    <div class="icon-badge">
+                        <i class="fas fa-comment-dots"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="icon-badge">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">5</span>
+                    </div>
+                    <div class="user-profile-sm">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" style="border-radius: 50%;"
+                            alt="Profile">
+                        <span><strong>Madhu</strong><br><small>@madhu_ux</small></span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Overview Section -->
+            <section id="overview" class="dashboard-section active">
+                <div class="overview-banner">
+                    <div class="banner-content">
+                        <h1>Hungry for more, Madhu?</h1>
+                        <p>Get 30% Off on your next order with code <strong>PIZZA30</strong></p>
+                        <br>
+                        <a href="index.html" class="btn" style="background: white; color: var(--primary);">Order Now</a>
+                    </div>
+                    <img src="assets/hero_pizza.png" class="banner-img" alt="Pizza">
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="icon" style="background: #E3F2FD; color: #1E88E5;"><i
+                                class="fas fa-pizza-slice"></i></div>
+                        <span style="color: var(--text-grey); font-size: 14px;">Total Orders</span>
+                        <h2>45</h2>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon" style="background: #FFF8E1; color: #FFB300;"><i class="fas fa-star"></i></div>
+                        <span style="color: var(--text-grey); font-size: 14px;">Rewards Pts</span>
+                        <h2>1,250</h2>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon" style="background: #E8F5E9; color: #43A047;"><i class="fas fa-wallet"></i>
+                        </div>
+                        <span style="color: var(--text-grey); font-size: 14px;">Total Savings</span>
+                        <h2>$120.50</h2>
+                    </div>
+                    <div class="stat-card">
+                        <div class="icon" style="background: #F3E5F5; color: #8E24AA;"><i class="fas fa-heart"></i>
+                        </div>
+                        <span style="color: var(--text-grey); font-size: 14px;">Favorite Pizza</span>
+                        <h2>Margherita</h2>
+                    </div>
+                </div>
+
+                <div class="card-grid">
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3>Current Activity</h3>
+                            <a href="#" style="color: var(--primary); font-size: 14px;">See All</a>
+                        </div>
+                        <div class="order-item">
+                            <img src="assets/hero_pizza.png" width="50" alt="Pizza">
+                            <div>
+                                <strong>Double Pepperoni</strong><br>
+                                <small>Order #12345 • 20 mins ago</small>
+                            </div>
+                            <span class="status-badge status-preparing">Preparing</span>
+                        </div>
+                        <div class="order-item">
+                            <img src="assets/margherita.png" width="50" alt="Pizza">
+                            <div>
+                                <strong>Classic Margherita</strong><br>
+                                <small>Order #12344 • yesterday</small>
+                            </div>
+                            <span class="status-badge status-delivered">Delivered</span>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3>Best Offers For You</h3>
+                        </div>
+                        <div
+                            style="background: #FFF8E1; padding: 20px; border-radius: 15px; margin-bottom: 15px; display: flex; align-items: center; gap: 15px;">
+                            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=100&q=80"
+                                width="45" style="border-radius:10px;">
+                            <div>
+                                <strong>BUY 1 GET 1 FREE</strong>
+                                <p style="font-size: 13px; color: #666;">Valid on all medium pizzas till Sunday.</p>
+                            </div>
+                        </div>
+                        <div
+                            style="background: #E3F2FD; padding: 20px; border-radius: 15px; display: flex; align-items: center; gap: 15px;">
+                            <img src="https://images.unsplash.com/photo-1549194388-f61be84a6e9e?auto=format&fit=crop&w=100&q=80"
+                                width="45" style="border-radius:10px;">
+                            <div>
+                                <strong>Free Delivery</strong>
+                                <p style="font-size: 13px; color: #666;">On orders above $30. Use code FREE30.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section id="profile" class="dashboard-section">
+                <div class="dashboard-card" style="max-width: 800px;">
+                    <h3>Profile Settings</h3>
+                    <br>
+                    <div class="profile-info-grid">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" value="Madhu Kumar">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" value="madhu.ux@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="text" value="+1 234 567 890">
+                        </div>
+                        <div class="form-group">
+                            <label>Change Password</label>
+                            <input type="password" placeholder="New Password">
+                        </div>
+                    </div>
+                    <br>
+                    <button class="btn btn-primary">Update Profile</button>
+                </div>
+            </section>
+
+            <!-- Payments Section -->
+            <section id="payments" class="dashboard-section">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Saved Payment Methods</h3>
+                        <button class="btn btn-primary" style="padding: 8px 20px; font-size: 14px;">+ Add Card</button>
+                    </div>
+                    <div class="payment-methods-grid"
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                        <div
+                            style="background: linear-gradient(135deg, #1a1a1a, #434343); padding: 25px; border-radius: 20px; color: white;">
+                            <div
+                                style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+                                <i class="fab fa-cc-visa" style="font-size: 32px;"></i>
+                                <span style="font-size: 12px; opacity: 0.7;">Primary Card</span>
+                            </div>
+                            <div style="font-size: 18px; letter-spacing: 2px; margin-bottom: 20px;">•••• •••• •••• 4590
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <div><small style="opacity: 0.6; display: block;">Expires</small> 12/26</div>
+                                <div style="text-align: right;"><small style="opacity: 0.6; display: block;">Card
+                                        Holder</small> MADHU KUMAR</div>
+                            </div>
+                        </div>
+                        <div
+                            style="border: 2px dashed #ddd; padding: 25px; border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #999; cursor: pointer;">
+                            <i class="fas fa-plus-circle" style="font-size: 30px; margin-bottom: 10px;"></i>
+                            <span>Add New Method</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Favorites Section -->
+            <section id="favorites" class="dashboard-section">
+                <div class="dashboard-card">
+                    <h3>My Favorite Pizzas</h3>
+                    <br>
+                    <div class="popular-grid">
+                        <div class="menu-item" style="box-shadow: none; border: 1px solid #eee;">
+                            <img src="assets/hero_pizza.png" class="menu-item-img" style="width: 120px; height: 120px;"
+                                alt="">
+                            <h4>Double Pepperoni</h4>
+                            <p style="color: var(--primary); font-weight: 700;">$15.99</p>
+                            <br>
+                            <button class="btn btn-primary" style="width: 100%; padding: 10px;">Order Again</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Coupons Section -->
+            <section id="coupons" class="dashboard-section">
+                <div class="dashboard-card">
+                    <h3>Available Coupons</h3>
+                    <br>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        <div
+                            style="background: #FFF5F5; border: 2px dashed var(--primary); padding: 20px; border-radius: 15px; position: relative;">
+                            <strong style="color: var(--primary); font-size: 18px;">PIZZA30</strong>
+                            <p style="font-size: 13px; margin: 5px 0;">30% OFF on all large pizzas</p>
+                            <small style="color: #888;">Expires in 2 days</small>
+                        </div>
+                        <div
+                            style="background: #F0F9FF; border: 2px dashed #0088ff; padding: 20px; border-radius: 15px;">
+                            <strong style="color: #0088ff; font-size: 18px;">FREEDEL</strong>
+                            <p style="font-size: 13px; margin: 5px 0;">Free Delivery over $25</p>
+                            <small style="color: #888;">Permanent Offer</small>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Notifications Section -->
+            <section id="notifications" class="dashboard-section">
+                <div class="dashboard-card">
+                    <h3>Notifications</h3>
+                    <br>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <div
+                            style="padding: 15px; background: #f9f9f9; border-radius: 12px; display: flex; gap: 15px; align-items: center;">
+                            <div
+                                style="width: 40px; height: 40px; border-radius: 50%; background: #E3F2FD; color: #1E88E5; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <div>
+                                <strong style="font-size: 14px;">Order #12345 in transit!</strong>
+                                <p style="font-size: 12px; color: #777;">Your pizza will be there in 15 mins.</p>
+                            </div>
+                        </div>
+                        <div
+                            style="padding: 15px; background: #f9f9f9; border-radius: 12px; display: flex; gap: 15px; align-items: center;">
+                            <div
+                                style="width: 40px; height: 40px; border-radius: 50%; background: #FFF3E0; color: #EF6C00; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-gift"></i>
+                            </div>
+                            <div>
+                                <strong style="font-size: 14px;">Gift Earned!</strong>
+                                <p style="font-size: 12px; color: #777;">You've unlocked a free garlic bread.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+
+</html>

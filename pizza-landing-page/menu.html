@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Pizza.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .menu-page-header {
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            border-radius: 50px;
+            background: var(--white);
+            border: 2px solid #eee;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: #fffafa;
+        }
+
+        /* Custom Builder Card */
+        .builder-section {
+            background: var(--white);
+            border-radius: 40px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .builder-visual {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .base-dough {
+            width: 300px;
+            filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.1));
+        }
+
+        .topping-layer {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            pointer-events: none;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .topping-layer.active {
+            opacity: 1;
+        }
+
+        .builder-controls {
+            flex: 1;
+        }
+
+        .topping-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .topping-item {
+            padding: 10px;
+            border: 1px solid #eee;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .topping-item.active {
+            border-color: var(--primary);
+            background: #fffafa;
+        }
+
+        .topping-item img {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .builder-section {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">Pizza<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html" class="active">Menu</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="account.html">Account</a></li>
+        </ul>
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <div id="cart-trigger" style="position: relative; cursor: pointer;">
+                <i class="fas fa-shopping-cart" style="font-size: 20px;"></i>
+                <span class="cart-count"
+                    style="position: absolute; top: -10px; right: -10px; background: var(--primary); color: white; width: 18px; height: 18px; border-radius: 50%; font-size: 10px; display: flex; align-items: center; justify-content: center;">2</span>
+            </div>
+            <a href="login.html" class="btn btn-primary" style="padding: 10px 25px;">Login</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="menu-page-header">
+            <h1>Our <span class="highlight">Delicious</span> Menu</h1>
+            <p style="color: var(--text-grey); margin-top: 10px;">Crafted with passion, delivered with love.</p>
+        </header>
+
+        <!-- Filters -->
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">All Pizzas</button>
+            <button class="filter-btn" data-filter="veg">Vegetarian</button>
+            <button class="filter-btn" data-filter="non-veg">Non-Veg</button>
+            <button class="filter-btn" data-filter="spicy">Extra Spicy</button>
+        </div>
+
+        <!-- Custom Pizza Builder -->
+        <section class="builder-section">
+            <div class="builder-visual">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80"
+                    class="base-dough" id="pizza-base" alt="Pizza Base" style="border-radius: 50%;">
+                <!-- Layers can use filtered versions or just placeholders for now as we can't generate transparent toppings easily -->
+                <div class="topping-layer" id="layer-pepperoni"
+                    style="background: rgba(227, 28, 37, 0.4); border-radius: 50%; width: 300px; height: 300px; position: absolute;">
+                </div>
+                <div class="topping-layer" id="layer-mushroom"
+                    style="background: rgba(139, 69, 19, 0.4); border-radius: 50%; width: 300px; height: 300px; position: absolute;">
+                </div>
+                <div class="topping-layer" id="layer-pepper"
+                    style="background: rgba(34, 139, 34, 0.4); border-radius: 50%; width: 300px; height: 300px; position: absolute;">
+                </div>
+                <div class="topping-layer" id="layer-cheese"
+                    style="background: rgba(255, 215, 0, 0.4); border-radius: 50%; width: 300px; height: 300px; position: absolute;">
+                </div>
+            </div>
+            <div class="builder-controls">
+                <h2>Custom <span class="highlight">Pizza Builder</span></h2>
+                <p style="font-size: 14px; color: var(--text-grey);">Choose your favorite toppings and create your
+                    masterpiece!</p>
+                <div class="topping-grid">
+                    <div class="topping-item" data-topping="pepperoni">
+                        <span style="font-size: 24px;">🥓</span>
+                        <div style="font-size: 12px; font-weight: 600;">Pepperoni</div>
+                    </div>
+                    <div class="topping-item" data-topping="mushroom">
+                        <span style="font-size: 24px;">🍄</span>
+                        <div style="font-size: 12px; font-weight: 600;">Mushroom</div>
+                    </div>
+                    <div class="topping-item" data-topping="pepper">
+                        <span style="font-size: 24px;">🫑</span>
+                        <div style="font-size: 12px; font-weight: 600;">Bell Pepper</div>
+                    </div>
+                    <div class="topping-item" data-topping="cheese">
+                        <span style="font-size: 24px;">🧀</span>
+                        <div style="font-size: 12px; font-weight: 600;">Extra Cheese</div>
+                    </div>
+                </div>
+                <div style="margin-top: 30px; display: flex; justify-content: space-between; align-items: center;">
+                    <div style="font-size: 20px; font-weight: 800;">$ <span id="custom-price">12.00</span></div>
+                    <button class="btn btn-primary">Add Custom Pizza</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Grid -->
+        <div class="menu-grid" id="menu-items">
+            <!-- Items will be generated via JS -->
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>My Shopping Cart</h3>
+            <i class="fas fa-times close-cart" id="close-cart"></i>
+        </div>
+        <div class="cart-items-container">
+            <div class="cart-item">
+                <img src="assets/hero_pizza.png" class="cart-item-img" alt="">
+                <div class="cart-item-info">
+                    <h4>Double Pepperoni</h4>
+                    <span style="color: var(--primary); font-weight: 700;">$15.99</span>
+                    <div class="cart-item-qty">
+                        <div class="qty-btn"><i class="fas fa-minus"></i></div>
+                        <span>1</span>
+                        <div class="qty-btn"><i class="fas fa-plus"></i></div>
+                    </div>
+                </div>
+                <i class="fas fa-trash" style="color: #ccc; cursor: pointer;"></i>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>Subtotal</span>
+                <span>$15.99</span>
+            </div>
+            <div class="cart-total-row">
+                <span>Delivery</span>
+                <span>$2.00</span>
+            </div>
+            <div class="cart-total-row grand-total">
+                <span>Total</span>
+                <span>$17.99</span>
+            </div>
+            <a href="payment.html" class="checkout-btn">Proceed to Checkout</a>
+        </div>
+    </div>
+
+    <script src="cart.js"></script>
+    <script>
+        const menuData = [
+            { id: 1, name: 'Classic Margherita', type: 'veg', spicy: false, price: 12.99, img: 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=400&q=80' },
+            { id: 2, name: 'Double Pepperoni', type: 'non-veg', spicy: false, price: 15.99, img: 'https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=400&q=80' },
+            { id: 3, name: 'Spicy BBQ Chicken', type: 'non-veg', spicy: true, price: 16.99, img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=400&q=80' },
+            { id: 4, name: 'Gourmet Veggie', type: 'veg', spicy: false, price: 14.99, img: 'https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=400&q=80' },
+            { id: 5, name: 'Hellfire Special', type: 'non-veg', spicy: true, price: 18.25, img: 'https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=400&q=80' }
+        ];
+
+        function renderMenu(filter = 'all') {
+            const container = document.getElementById('menu-items');
+            container.innerHTML = '';
+
+            const filtered = menuData.filter(item => {
+                if (filter === 'all') return true;
+                if (filter === 'veg') return item.type === 'veg';
+                if (filter === 'non-veg') return item.type === 'non-veg';
+                if (filter === 'spicy') return item.spicy === true;
+            });
+
+            filtered.forEach(item => {
+                container.innerHTML += `
+                    <div class="menu-item" data-type="${item.type}">
+                        <img src="${item.img}" 
+                             class="menu-item-img" 
+                             alt="${item.name}" 
+                             onerror="this.src='https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80'; console.warn('Image failed to load: ' + this.src);">
+                        <h3>${item.name}</h3>
+                        <div class="price-row">
+                            <span class="price">$${item.price}</span>
+                            <div class="add-btn"><i class="fas fa-plus"></i></div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        renderMenu();
+
+        // Filter Logic
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderMenu(btn.dataset.filter);
+            });
+        });
+
+        // Topping Logic
+        document.querySelectorAll('.topping-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+                const layer = document.getElementById(`layer-${item.dataset.topping}`);
+                if (layer) layer.classList.toggle('active');
+
+                // Update Price
+                const activeCount = document.querySelectorAll('.topping-item.active').length;
+                document.getElementById('custom-price').innerText = (12 + (activeCount * 1.5)).toFixed(2);
+            });
+        });
+    </script>
+</body>
+
+</html>

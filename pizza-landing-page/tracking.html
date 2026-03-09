@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Order | Pizza.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .tracking-container {
+            padding: 100px 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .status-box {
+            background: white;
+            padding: 40px;
+            border-radius: 40px;
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .order-info-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* Progress Steps */
+        .progress-track {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .progress-track::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #eee;
+            z-index: 1;
+        }
+
+        .progress-fill {
+            position: absolute;
+            top: 25px;
+            left: 0;
+            height: 4px;
+            background: var(--primary);
+            z-index: 2;
+            width: 50%;
+            /* This updates with status */
+            transition: all 1s ease;
+        }
+
+        .step {
+            z-index: 3;
+            text-align: center;
+        }
+
+        .step-icon {
+            width: 55px;
+            height: 55px;
+            background: #eee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-size: 20px;
+            color: #999;
+            transition: var(--transition);
+        }
+
+        .step.active .step-icon {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 20px rgba(227, 28, 37, 0.3);
+        }
+
+        .step.completed .step-icon {
+            background: var(--primary);
+            color: white;
+        }
+
+        .step span {
+            font-size: 13px;
+            font-weight: 600;
+            color: #777;
+        }
+
+        .step.active span {
+            color: var(--primary);
+        }
+
+        /* Delivery Animation */
+        .delivery-visual {
+            position: relative;
+            height: 150px;
+            margin-top: 40px;
+            overflow: hidden;
+            background: #fdfdfd;
+            border-radius: 20px;
+        }
+
+        .bike-icon {
+            position: absolute;
+            bottom: 20px;
+            left: -100px;
+            font-size: 40px;
+            color: var(--primary);
+            animation: drive 10s linear infinite;
+        }
+
+        @keyframes drive {
+            0% {
+                left: -100px;
+                transform: scaleX(1);
+            }
+
+            45% {
+                left: 100%;
+                transform: scaleX(1);
+            }
+
+            50% {
+                left: 100%;
+                transform: scaleX(-1);
+            }
+
+            95% {
+                left: -100px;
+                transform: scaleX(-1);
+            }
+
+            100% {
+                left: -100px;
+                transform: scaleX(1);
+            }
+        }
+
+        .road {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #eee;
+            border-top: 2px dashed #ddd;
+        }
+
+        /* Map Section */
+        .map-section {
+            height: 400px;
+            background: #e5e3df;
+            border-radius: 40px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .fake-map-bg {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+            filter: grayscale(0.5);
+        }
+
+        .map-marker {
+            position: absolute;
+            font-size: 30px;
+            color: var(--primary);
+            filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.2));
+        }
+
+        .marker-shop {
+            top: 20%;
+            left: 20%;
+            color: #333;
+        }
+
+        .marker-home {
+            bottom: 30%;
+            right: 30%;
+            color: var(--primary);
+        }
+
+        .delivery-route {
+            position: absolute;
+            top: 25%;
+            left: 23%;
+            width: 45%;
+            height: 40%;
+            border-bottom: 3px dashed var(--primary);
+            border-right: 3px dashed var(--primary);
+            border-radius: 0 0 50px 0;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">Pizza<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="account.html">Account</a></li>
+            <li><a href="tracking.html" class="active">Tracking</a></li>
+        </ul>
+        <div id="cart-trigger" style="position: relative; cursor: pointer;">
+            <i class="fas fa-shopping-cart" style="font-size: 20px;"></i>
+        </div>
+    </nav>
+
+    <div class="container tracking-container">
+
+        <div class="status-box">
+            <div class="order-info-header">
+                <div style="text-align: left;">
+                    <span style="color: #999; font-size: 13px;">Order Number</span>
+                    <h3 style="margin-top: 5px;">#PZ-8891024</h3>
+                </div>
+                <div style="text-align: right;">
+                    <span style="color: #999; font-size: 13px;">Estimated Delivery</span>
+                    <h3 style="margin-top: 5px; color: var(--primary);">25 - 30 Mins</h3>
+                </div>
+            </div>
+
+            <h2 style="margin-bottom: 40px;">Your pizza is <span class="highlight">Out for Delivery!</span></h2>
+
+            <div class="progress-track">
+                <div class="progress-fill" id="progress-line"></div>
+                <div class="step completed">
+                    <div class="step-icon"><i class="fas fa-clipboard-list"></i></div>
+                    <span>Placed</span>
+                </div>
+                <div class="step completed">
+                    <div class="step-icon"><i class="fas fa-pizza-slice"></i></div>
+                    <span>Preparing</span>
+                </div>
+                <div class="step active">
+                    <div class="step-icon"><i class="fas fa-moped"></i></div>
+                    <span>On the Way</span>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fas fa-home"></i></div>
+                    <span>Arrived</span>
+                </div>
+            </div>
+
+            <div class="delivery-visual">
+                <div class="road"></div>
+                <i class="fas fa-moped bike-icon"></i>
+                <div style="margin-top: 80px; font-style: italic; color: #999;">Driver: Rahul Kumar • +91 98765 43210
+                </div>
+            </div>
+        </div>
+
+        <div class="map-section">
+            <img src="https://static-maps.yandex.ru/1.x/?lang=en_US&ll=77.2090,28.6139&z=13&l=map&size=900,400"
+                class="fake-map-bg" alt="Map">
+            <div class="marker-shop map-marker"><i class="fas fa-store"></i></div>
+            <div class="marker-home map-marker"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="delivery-route"></div>
+
+            <!-- Floating Rider Status Card -->
+            <div
+                style="position: absolute; bottom: 20px; left: 20px; background: white; padding: 15px 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 15px;">
+                <img src="assets/ingredients.png" width="40" height="40" style="border-radius: 50%;" alt="">
+                <div>
+                    <strong style="font-size: 14px;">Rahul K.</strong>
+                    <p style="font-size: 12px; color: var(--primary);">0.8 km away</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 40px; text-align: center;">
+            <a href="index.html" class="btn" style="border: 2px solid #eee;">Back to Home</a>
+            <button class="btn btn-primary" style="margin-left: 20px;">Contact Support</button>
+        </div>
+
+    </div>
+
+    <!-- Background Decoration -->
+    <img src="assets/ingredients.png" class="ingredient" style="top: 10%; right: 5%; width: 100px; opacity: 0.3;">
+    <img src="assets/ingredients.png" class="ingredient" style="bottom: 10%; left: 5%; width: 80px; opacity: 0.3;">
+
+    <script>
+        // Simple simulation to update progress
+        let progress = 75; // 75% means "On the Way"
+        document.getElementById('progress-line').style.width = progress + '%';
+
+        // Auto transition demo
+        setTimeout(() => {
+            // Simulate status change to Arrived
+            const steps = document.querySelectorAll('.step');
+            steps[2].classList.add('completed');
+            steps[2].classList.remove('active');
+            steps[3].classList.add('active');
+            document.getElementById('progress-line').style.width = '100%';
+        }, 8000);
+    </script>
+</body>
+
+</html>
